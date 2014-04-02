@@ -1,0 +1,1 @@
+Totalna wyszukiwarka wikipedii
