@@ -12,7 +12,8 @@ INSTALACJA ROZSZERZENIA PHP SOLR
 ================================================================================
 
 
-Do instalacji mogą być potrzebne pakiety takie jak curl, libcurl i libxml2
+Do instalacji mogą być potrzebne pakiety takie jak curl, libcurl i libxml2:
+
 sudo apt-get install curl libcurl3 libcurl3-dev php5-cur libxml2
 
 PRZED INSTALACJĄ ROZSZERZENIE POBIERAMY ZE STRONY: http://pecl.php.net/package/solr
