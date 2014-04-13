@@ -48,3 +48,7 @@ Droga alternatywna:
 2.) pecl install -n solr
 
 Prawdopodobnie trzeba także ręcznie dodać plik solr.ini
+
+DOKUMENTACJA PHP SOLR: http://www.php.net/manual/en/book.solr.php
+
+PRZYDATNE INFORMACJE DOTYCZĄCE INSTALACJI: https://bugs.php.net/bug.php?id=59028
