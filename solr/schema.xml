@@ -67,6 +67,7 @@
 	<field name="id"        type="string"  indexed="true" stored="true"/>
 	<field name="title"     type="string"  indexed="true" stored="false"/>
 	<field name="revision"  type="string"    indexed="true" stored="true" required="true"/>
+	<field name="parentId"  type="string"    indexed="true" stored="true"/>
 	<field name="user"      type="string"  indexed="true" stored="true"/>
 	<field name="userId"    type="long"     indexed="true" stored="true"/>
 	<field name="text"      type="text_en"    indexed="true" stored="true"/>

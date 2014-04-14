@@ -12,6 +12,7 @@
                 <field column="id"        xpath="/mediawiki/page/id" commonField="true" />
                 <field column="title"     xpath="/mediawiki/page/title" commonField="true" />
                 <field column="revision"  xpath="/mediawiki/page/revision/id" />
+                <field column="parentId"  xpath="/mediawiki/page/revision/parentid" />
                 <field column="user"      xpath="/mediawiki/page/revision/contributor/username" />
                 <field column="userId"    xpath="/mediawiki/page/revision/contributor/id" />
                 <field column="text"      xpath="/mediawiki/page/revision/text" />
