@@ -3,7 +3,7 @@ $("#search").click(function(event) {
 
     /* Stop form from submitting normally */
     event.preventDefault();
-
+	$("#results").html('');
     /* Clear result div*/
    // $("#results").html('<div class="jumbotron"><div>');
 
