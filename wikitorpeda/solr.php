@@ -32,10 +32,10 @@ $results = $query_response->getResponse();
 /*
  * Parsowanie tekstu artykułów
  */
-/*
+
 for($i=0; $i< count($results['response']['docs']); $i++) {
     $results['response']['docs'][$i]['text']=$parser->parse($results['response']['docs'][$i]['text']);
-}*/
+}
 
 echo json_encode($results);
 //echo json_encode($query_response->getResponse());
