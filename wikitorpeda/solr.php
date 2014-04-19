@@ -1,7 +1,7 @@
-
 <?php
 
 include "bootstrap.php";
+require_once(dirname(__FILE__) . '/wikiparser/wikiParser.class.php');
 
 $options = array
 (
@@ -21,13 +21,23 @@ $query->setStart(0);
 
 $query->setRows(50);
 
+$parser = new wikiParser(); //błążejowe
+
 //$query->addField('cat')->addField('features')->addField('id')->addField('timestamp');
 
 $query_response = $client->query($query);
 $query_response->setParseMode(SolrQueryResponse::PARSE_SOLR_DOC);
-echo json_encode($query_response->getResponse());
-//$response = $query_response->getResponse();
+$results = $query_response->getResponse();
 
-//print_r($response);
+/*
+ * Parsowanie tekstu artykułów
+ */
+
+for($i=0; $i< count($results['response']['docs']); $i++) {
+    $results['response']['docs'][$i]['text']=$parser->parse($results['response']['docs'][$i]['text']);
+}
+
+echo json_encode($results);
+//echo json_encode($query_response->getResponse());
 
 ?>

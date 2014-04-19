@@ -3,7 +3,7 @@ $("#search").click(function(event) {
 
     /* Stop form from submitting normally */
     event.preventDefault();
-
+	$("#results").html('');
     /* Clear result div*/
    // $("#results").html('<div class="jumbotron"><div>');
 
@@ -15,9 +15,13 @@ $("#search").click(function(event) {
         url: "solr.php",
         type: "post",
         data: values,
+        dataType: 'json',
         success: function(ret){
             //alert("success");
-            $("#results").html('<div class="jumbotron">'+ret+'<div>');
+           // var template = JSON.parse(JSON.stringify(ret.value[0]));
+           ret.response.docs.forEach(function(entry) {
+				$('#results').append('<div class="jumbotron" style="margin-top: 10px"><h3>'+entry.titleText+'</h3>'+entry.text+'</div>');
+			});
         },
         error:function(){
             alert("failure");
@@ -25,3 +29,23 @@ $("#search").click(function(event) {
         }
     });
 });
+
+function get_parent(parent_id){
+	$.ajax({
+        url: "solr.php",
+        type: "post",
+        data: values,
+        dataType: 'json',
+        success: function(ret){
+            //alert("success");
+           // var template = JSON.parse(JSON.stringify(ret.value[0]));
+           ret.response.docs.forEach(function(entry) {
+				$('#results').append('<div class="jumbotron" style="margin-top: 10px"><h3>'+entry.titleText+'</h3>'+entry.text+'</div>');
+			});
+        },
+        error:function(){
+            alert("failure");
+            $("#results").html('There is error while submit');
+        }
+    });
+}
