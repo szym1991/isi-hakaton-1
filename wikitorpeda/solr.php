@@ -1,7 +1,7 @@
 <?php
 
 include "bootstrap.php";
-require_once(dirname(__FILE__) . '/../wikiparser/wikiParser.class.php');
+require_once(dirname(__FILE__) . '/wikiparser/wikiParser.class.php');
 
 $options = array
     (
