@@ -9,12 +9,25 @@ $("#search").click(function(event) {
 
     /* Get some values from elements on the page: */
     var values = $('#query').serialize();
+    var options_array = new Array();
+    options_array[0]=document.getElementById("query").value;
+    if (document.getElementById('check_date').checked){
+        var date_options = new Array();
+        date_options[0]=true;
+        date_options[1]=new Date(document.getElementById("dp1").value);
+        date_options[2]=new Date(document.getElementById("dp2").value);
+        options_array[1]=date_options;
+    }else{
+        var date_options = new Array();
+        date_options[0]=false;
+        options_array[1]=date_options;
+    }
 
     /* Send the data using post and put the results in a div */
     $.ajax({
         url: "solr.php",
         type: "post",
-        data: values,
+        data: {result:JSON.stringify(options_array)},
         dataType: 'json',
         success: function(ret){
             //alert("success");
@@ -53,3 +66,8 @@ function get_parent(parent_id){
         }
     });
 }
+
+$("input.question").click(function(){
+    $("#date_searcher").toggle();
+});
+
