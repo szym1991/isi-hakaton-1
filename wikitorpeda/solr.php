@@ -1,7 +1,7 @@
 <?php
 
 include "bootstrap.php";
-require_once(dirname(__FILE__) . '/wikiparser/wikiParser.class.php');
+require_once(dirname(__FILE__) . '/../wikiparser/wikiParser.class.php');
 
 $options = array
 (
@@ -20,6 +20,13 @@ $query->setQuery($temp);
 $query->setStart(0);
 
 $query->setRows(50);
+// $query->addHighlightField("text");
+$query->setHighlight(TRUE);
+$query->setHighlightSimplePre('<span class="result-highlighted">');
+$query->setHighlightSimplePost('</span>');
+$query->setHighlightUsePhraseHighlighter(true);
+$query->setHighlightFragsize(250);
+
 
 $parser = new wikiParser(); //błążejowe
 

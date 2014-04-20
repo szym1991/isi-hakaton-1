@@ -20,8 +20,12 @@ $("#search").click(function(event) {
             //alert("success");
            // var template = JSON.parse(JSON.stringify(ret.value[0]));
            ret.response.docs.forEach(function(entry) {
-				$('#results').append('<div class="jumbotron" style="margin-top: 10px"><h3>'+entry.titleText+'</h3>'+entry.text+'</div>');
+                                var revisionId = entry.revision;
+				$('#results').append('<div class="jumbotron" style="margin-top: 10px"><h3>'+entry.titleText+'</h3>'+ret.highlighting[revisionId].text+'</div>');
 			});
+//           ret.highlighting.forEach(function(entry) {
+//            $('#results').append('<div class="jumbotron" style="margin-top: 10px"><h3>'+entry.titleText+'</h3>'+entry.text+'</div>');
+//            });
         },
         error:function(){
             alert("failure");
