@@ -86,8 +86,8 @@
                             <div class="alert alert-error" id="alert" style="display: none;">
 				<strong>Oh snap!</strong>
                             </div>
-                            OD: <input type="text" class="span2" value="02-16-2012" id="dp1" > 
-                            DO: <input type="text" class="span2" value="02-16-2012" id="dp2" > 
+                            OD: <input type="text" class="span2" id="dp1" > 
+                            DO: <input type="text" class="span2" id="dp2" > 
                         </div>
                     </div>​
 
@@ -114,8 +114,17 @@
 		$(function(){
 			window.prettyPrint && prettyPrint();
 			var today = new Date();
-                        document.getElementById("dp1").value = today.getFullYear()+ "-" +(today.getMonth() + 1) + "-" + today.getDate();
-                        document.getElementById("dp2").value = today.getFullYear()+ "-" +(today.getMonth() + 1) + "-" + today.getDate();
+                        var month = today.getMonth()+1; 
+                        var day = today.getDate();
+                        if(month.toString().length === 1) {
+                            var month = '0'+month;
+                        }
+                        if(day.toString().length === 1) {
+                            var day = '0'+day;
+                        } 
+      
+                        document.getElementById("dp1").value = today.getFullYear()+ "-" +month + "-" + day;
+                        document.getElementById("dp2").value = today.getFullYear()+ "-" +month + "-" + day;
 			var startDate = today;
 			var endDate = today;
 			$('#dp1').datepicker({
