@@ -21,7 +21,7 @@ $("#search").click(function(event) {
            // var template = JSON.parse(JSON.stringify(ret.value[0]));
            ret.response.docs.forEach(function(entry) {
                                 var revisionId = entry.revision;
-				$('#results').append('<div class="jumbotron" style="margin-top: 10px"><h3>'+entry.titleText+'</h3>'+ret.highlighting[revisionId].text+'</div>');
+				$('#results').append('<div class="jumbotron" style="margin-top: 10px"><h3><a href="revision.php?id='+revisionId+'">'+entry.titleText+'</a></h3>'+ret.highlighting[revisionId].text+'</div>');
 			});
 //           ret.highlighting.forEach(function(entry) {
 //            $('#results').append('<div class="jumbotron" style="margin-top: 10px"><h3>'+entry.titleText+'</h3>'+entry.text+'</div>');
