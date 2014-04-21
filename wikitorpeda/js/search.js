@@ -47,6 +47,7 @@ $("#search").click(function(event) {
              var el = document.getElementById("per_page");
              var selectedArea = el.options[el.selectedIndex].value;
              $('#page_container').pajinate({items_per_page : selectedArea});
+             window.scrollBy(0,350);
 //           ret.highlighting.forEach(function(entry) {
 //            $('#results').append('<div class="jumbotron" style="margin-top: 10px"><h3>'+entry.titleText+'</h3>'+entry.text+'</div>');
 //            });
