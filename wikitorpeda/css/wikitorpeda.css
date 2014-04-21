@@ -10,3 +10,79 @@ and open the template in the editor.
 
 .result-highlighted { background-color:#FFFF00; }
 
+/* Top nav and header */
+
+.startbootstrap-nav {
+    border-color: #a5423b;
+    background-color: #b84d45;
+    box-shadow: 0 1px 0 rgba(255,255,255,.1);
+}
+
+.startbootstrap-nav .navbar-brand {
+    color: #fff;
+}
+
+.startbootstrap-nav .navbar-nav > li > a,
+.masthead a {
+    color: #fbdedb;
+}
+
+.startbootstrap-nav .navbar-nav > li > a:hover,
+.startbootstrap-nav .navbar-nav > li > a:focus {
+    color: #fff;
+    background-color: #a5423b;
+}
+
+.startbootstrap-nav .navbar-nav > .active > a,
+.startbootstrap-nav .navbar-nav > .active > a:hover {
+    color: #fff;
+    background-color: #a5423b;
+}
+
+.startbootstrap-nav .nav .open > a,
+.nav .open > a:hover,
+.startbootstrap-nav .nav .open > a:focus {
+    color: #fff;
+    background-color: #a5423b;
+}
+
+.startbootstrap-nav .navbar-toggle {
+    border-color: #b84d45;
+}
+
+.startbootstrap-nav .navbar-toggle:hover {
+    border-color: #b84d45;
+    background-color: #b84d45;
+}
+
+.startbootstrap-nav .navbar-collapse {
+    border: none;
+}
+
+.startbootstrap-nav .navbar-toggle .icon-bar {
+    background-color: #fff;
+}
+
+.startbootstrap-nav .nav .caret {
+    border-top-color: #fbdedb;
+    border-bottom-color: #fbdedb;
+}
+
+.startbootstrap-nav .nav .open > a,
+.nav .open > a:hover .caret,
+.startbootstrap-nav .nav .open > a:focus .caret,
+.startbootstrap-nav .nav .active .caret,
+.startbootstrap-nav .nav a:hover .caret,
+.startbootstrap-nav .nav a:focus .caret {
+    border-top-color: #fff;
+    border-bottom-color: #fff;
+}
+
+.startbootstrap-nav .dropdown-menu > li > a:hover,
+.startbootstrap-nav .dropdown-menu > li > a:focus,
+.startbootstrap-nav .dropdown-menu > .active > a,
+.startbootstrap-nav .dropdown-menu > .active > a:hover,
+.startbootstrap-nav .dropdown-menu > .active > a:focus {
+    color: #fff;
+    background-color: #a5423b;
+}
