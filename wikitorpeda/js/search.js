@@ -35,8 +35,12 @@ $("#search").click(function(event) {
            var i=1;
            ret.response.docs.forEach(function(entry) {
                                 var revisionId = entry.revision;
+<<<<<<< HEAD
 				$('#results').append('<div class="jumbotron" style="padding-top: 5px;"><h3>'+i+". "+entry.titleText+'</h3>'+ret.highlighting[revisionId].text+'</div>');
                                 i++;
+=======
+				$('#results').append('<div class="jumbotron" style="margin-top: 10px"><h3><a href="revision.php?id='+revisionId+'">'+entry.titleText+'</a></h3>'+ret.highlighting[revisionId].text+'</div>');
+>>>>>>> 92bed0b799d581b0274149d4a76c50c27ea651cc
 			});
 //           ret.highlighting.forEach(function(entry) {
 //            $('#results').append('<div class="jumbotron" style="margin-top: 10px"><h3>'+entry.titleText+'</h3>'+entry.text+'</div>');
