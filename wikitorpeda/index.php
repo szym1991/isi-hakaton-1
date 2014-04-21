@@ -38,7 +38,7 @@
 
         <!-- Fixed navbar -->
         <?php
-            require_once(dirname(__FILE__) . '/navbar.php');
+        require_once(dirname(__FILE__) . '/navbar.php');
         ?>
 
         <div class="container-fluid" id="container">
@@ -62,20 +62,22 @@
                             <button class="button" onclick="$('#tools_searcher').toggle();">Narzędzia zaawansowane</button>
                         </div>
                         </br>
-                        <div id="tools_searcher" class="row" style="display: none;">
-                            <div class="checkbox col-md-3">
-                                <label>
-                                    <input class="question" type="checkbox" id="check_date"> Zakres dat  
-                                </label>
+                        <div id="tools_searcher" style="display: none;">
+                            <div class="row">
+                                <div class="checkbox col-md-3">
+                                    <label>
+                                        <input class="question" type="checkbox" id="check_date"> Zakres dat  
+                                    </label>
+                                </div>
+                                <div class="col-md-5" style="padding-top: 5px;">
+                                    Liczba wyników na stronie:
+                                    <select class="selectpicker" id="per_page" data-style="btn-warning">
+                                        <option selected>10</option>
+                                        <option>15</option>
+                                        <option>25</option>
+                                    </select>
+                                </div> 
                             </div>
-                            <div class="col-md-5" style="padding-top: 5px;">
-                                Liczba wyników na stronie:
-                                <select class="selectpicker" id="per_page" data-style="btn-warning">
-                                    <option selected>10</option>
-                                    <option>15</option>
-                                    <option>25</option>
-                                </select>
-                            </div> 
                             <div id="date_searcher" style="display: none;">
                                 <div class="well" style="text-align: center;">
                                     <div class="alert alert-error" id="alert" style="display: none;">
