@@ -28,7 +28,7 @@ if ($data[1][0] == true) {
 
 $query->setStart(0);
 
-$query->setRows(50);
+$query->setRows(100);
 // $query->addHighlightField("text");
 $query->setHighlight(TRUE);
 $query->setHighlightSimplePre('<span class="result-highlighted">');

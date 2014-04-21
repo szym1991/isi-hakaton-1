@@ -61,12 +61,21 @@
                         <div style="text-align: right;">
                             <button class="button" onclick="$('#tools_searcher').toggle();">Narzędzia zaawansowane</button>
                         </div>
-                        <div id="tools_searcher" style="display: none;">
-                            <div class="checkbox">
+                        </br>
+                        <div id="tools_searcher" class="row" style="display: none;">
+                            <div class="checkbox col-md-3">
                                 <label>
                                     <input class="question" type="checkbox" id="check_date"> Zakres dat  
                                 </label>
                             </div>
+                            <div class="col-md-5" style="padding-top: 5px;">
+                                Liczba wyników na stronie:
+                                <select class="selectpicker" id="per_page" data-style="btn-warning">
+                                    <option selected>10</option>
+                                    <option>15</option>
+                                    <option>25</option>
+                                </select>
+                            </div> 
                             <div id="date_searcher" style="display: none;">
                                 <div class="well" style="text-align: center;">
                                     <div class="alert alert-error" id="alert" style="display: none;">
@@ -101,6 +110,7 @@
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.js"></script>
         <script src="js/bootstrap-datepicker.js"></script>
+        <script type="text/javascript" src="js/jquery.pajinate.js"></script>
         <script src="js/search.js"></script>
         <script>
                                 $('#check_date').removeAttr("checked");
