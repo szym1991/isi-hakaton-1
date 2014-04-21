@@ -34,8 +34,11 @@ $("#search").click(function(event) {
            // var template = JSON.parse(JSON.stringify(ret.value[0]));
            var i=1;
            ret.response.docs.forEach(function(entry) {
-                                var revisionId = entry.revision;
-				$('#results').append('<div class="jumbotron" style="padding-top: 5px;"><h3>'+i+'. <a href="revision.php?id='+revisionId+'">'+entry.titleText+'</a></h3>'+ret.highlighting[revisionId].text+'</div>');
+                                var revisionId = entry.revision,
+                                    date_time = entry.timestamp.split("T");
+                                    date_time[1]=date_time[1].replace("Z",""); 
+
+				$('#results').append('<div class="jumbotron" style="padding-top: 5px;"><h3>'+i+'. <a href="revision.php?id='+revisionId+'">'+entry.titleText+'</a></h3>'+ret.highlighting[revisionId].text+'</br></br><hr style="color:#050000;"><p style="font-size:10px;"><b>Data: </b>'+date_time[0]+'  <b>Czas: </b>'+date_time[1]+'</p></div>');
                                 i++;	
 
 			});
