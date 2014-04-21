@@ -1,5 +1,5 @@
-<!-- FIXED NAVBAR -->
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+<!-- Fixed navbar -->
+        <div class="navbar navbar-default navbar-fixed-top startbootstrap-nav" role="navigation">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -12,7 +12,7 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.php">Home</a></li>
+                        <li class="active"><a href="#">Home</a></li>
                         <li><a href="#about">O nas</a></li>
                         <li><a href="#contact">Kontakt</a></li>
                     </ul>
