@@ -25,6 +25,10 @@ if ($data[1][0] == true) {
     $range = 'timestamp:['.$data[1][1].' TO '.$data[1][2].']';
     $query->addFilterQuery($range); 
 }
+if ($data[2][0] == true) {
+    $comment = 'editionReason:'.$data[2][1];
+    $query->addFilterQuery($comment); 
+}
 
 $query->setStart(0);
 

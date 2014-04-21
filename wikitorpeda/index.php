@@ -66,7 +66,7 @@
                             <div class="row">
                                 <div class="checkbox col-md-3">
                                     <label>
-                                        <input class="question" type="checkbox" id="check_date"> Zakres dat  
+                                        <input class="question" type="checkbox" id="check_date" onclick="$('#date_searcher').toggle();"> Zakres dat  
                                     </label>
                                 </div>
                                 <div class="col-md-5" style="padding-top: 5px;">
@@ -87,7 +87,21 @@
                                     <b>DO:</b> <input type="text" class="span2" id="dp2" > 
                                 </div>
                             </div>​
-
+							<div class="row">
+                                <div class="checkbox col-md-3">
+                                    <label>
+                                        <input class="question" type="checkbox" id="check_comment" onclick="$('#comment_searcher').toggle();"> Komentarz  
+                                    </label>
+                                </div>
+                            </div>
+                            <div id="comment_searcher" style="display: none;">
+                                <div class="well" style="text-align: center;">
+                                    <div class="alert alert-error" id="alert" style="display: none;">
+                                        <strong>Oh snap!</strong>
+                                    </div>
+                                    <b>Komentarz:</b> <input type="text" class="span2" id="comment" >
+                                </div>
+                            </div>​
                         </div>
 
                         </p>
