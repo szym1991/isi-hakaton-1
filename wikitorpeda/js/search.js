@@ -27,6 +27,10 @@ $("#search").click(function(event) {
         comment_options[0]=true;
         comment_options[1]=document.getElementById("comment").value;
         options_array[2]=comment_options;
+    }else{
+        var comment_options = new Array();
+        comment_options[0]=false;
+        options_array[2]=comment_options;
     }
 
     /* Send the data using post and put the results in a div */
