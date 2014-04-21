@@ -6,7 +6,7 @@
                     stream="true"
                     pk="revision"
                     forEach="/mediawiki/page/ | /mediawiki/page/revision/"
-                    url="/home/szym/isi/plwiki-20140329-pages-meta-history1.xml"
+                    url="/media/szym/Dane/isi/plwikiDUMP.xml"
                     transformer="RegexTransformer,DateFormatTransformer"
                     >
                 <field column="id"        xpath="/mediawiki/page/id" commonField="true" />
@@ -16,6 +16,8 @@
                 <field column="user"      xpath="/mediawiki/page/revision/contributor/username" />
                 <field column="userId"    xpath="/mediawiki/page/revision/contributor/id" />
                 <field column="text"      xpath="/mediawiki/page/revision/text" />
+                <field column="editionReason"      xpath="/mediawiki/page/revision/editionReason" />
+                <field column="comment"      xpath="/mediawiki/page/revision/comment" />
                 <field column="timestamp" xpath="/mediawiki/page/revision/timestamp" dateTimeFormat="yyyy-MM-dd'T'hh:mm:ss'Z'" />
                 <field column="$skipDoc"  regex="^#REDIRECT .*" replaceWith="true" sourceColName="text"/>
            </entity>

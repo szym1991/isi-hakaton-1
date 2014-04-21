@@ -71,6 +71,8 @@
 	<field name="user"      type="string"  indexed="true" stored="true"/>
 	<field name="userId"    type="long"     indexed="true" stored="true"/>
 	<field name="text"      type="text_en"    indexed="true" stored="true"/>
+	<field name="comment"      type="text_en"    indexed="true" stored="true"/>
+	<field name="editionReason"      type="text_en"    indexed="true" stored="true"/>
 	<field name="timestamp" type="date"    indexed="true" stored="true"/>
 	<field name="titleText" type="text_en"    indexed="true" stored="true"/>
 	<field name="_version_" type="long" indexed="true" stored="true" multiValued="false"/>
