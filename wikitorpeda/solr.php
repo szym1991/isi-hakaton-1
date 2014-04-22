@@ -56,7 +56,7 @@ $query_response->setParseMode(SolrQueryResponse::PARSE_SOLR_DOC);
 $results = $query_response->getResponse();
 
 $total_found = $results['response']['numFound'];
-$total_found = $total_found / $data[4];
+$total_pages = ($total_found / $data[4])+1;
 
 //$facet_data = $results->facet_counts->facet_dates;
 
@@ -68,7 +68,7 @@ $total_found = $total_found / $data[4];
   $results['highlighting'][$i]['text'] = $parser->parse($results['highlighting'][$i]['text']);
   } */
 
-$ret = array($results, $total_found);
+$ret = array($results, $total_pages, $total_found);
 echo json_encode($ret);
 //echo json_encode($query_response->getResponse());
 ?>
