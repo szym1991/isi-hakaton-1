@@ -28,7 +28,8 @@
           <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
         <style type="text/css"></style>
-        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+        <!--<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">-->
+        <link href="css/bootstrap-paginator.css" rel="stylesheet">
         <script src="js/ga.js" async="" type="text/javascript"></script>
         <script src="js/mixpanel-2.js" async="" type="text/javascript"></script>
         <script src="paginator/lib/bootstrap-paginator.min.js"></script>

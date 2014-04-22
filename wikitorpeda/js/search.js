@@ -1,6 +1,8 @@
 /* Attach a submit handler to the form */
 $("#search").click(function(event) {
 
+    var i=1;
+    
     /* Stop form from submitting normally */
     event.preventDefault();
 	$("#results").html('');
@@ -32,6 +34,10 @@ $("#search").click(function(event) {
         comment_options[0]=false;
         options_array[2]=comment_options;
     }
+    options_array[3]=1;
+    var el = document.getElementById("per_page");
+    var selectedArea = el.options[el.selectedIndex].value;
+    options_array[4]=selectedArea;
 
     /* Send the data using post and put the results in a div */
     $.ajax({
@@ -42,33 +48,79 @@ $("#search").click(function(event) {
         success: function(ret){
             //alert("success");
            // var template = JSON.parse(JSON.stringify(ret.value[0]));
-           var i=1;
-           $('#results').append('<div id="page_container"><div class="page_navigation" style="padding-bottom: 50px;padding-top: 50px;"></div><ul class="content"></ul><div class="page_navigation"></div></div>');
-           ret.response.docs.forEach(function(entry) {
+           
+           $('#results').append('<div id="page_container"><div id="pagination"></div><div id="loader" style="line-height: 115px; text-align: center;"></div><div id="results_view"></div></div>');
+           ret[0].response.docs.forEach(function(entry) {
                                 var revisionId = entry.revision,
                                     date_time = entry.timestamp.split("T");
                                     date_time[1]=date_time[1].replace("Z",""); 
 
-				$('#results .content').append('<li><div class="jumbotron" style="padding-top: 5px;"><h3>'+i+'. <a href="revision.php?id='+revisionId+'">'
-                                        +entry.titleText+'</a></h3>'+'<h5><a href="allRevisions.php?id='+entry.id+'">Zobacz wszystkie rewizje artykułu</a></h5>'
-                                        +'<h5><a href="latestRevision.php?id='+entry.id+'">Zobacz najnowszą rewizję artykułu</a></h5>'
-                                        +ret.highlighting[revisionId].text+'</br></br><hr style="color:#050000;"><p style="font-size:10px;"><b>Data: </b>'
-                                        +date_time[0]+'  <b>Czas: </b>'+date_time[1]+'</p></div></li>');
+				$('#results_view').append('<div class="jumbotron" style="padding-top: 5px;"><h3>'+i+'. <a href="revision.php?id='+revisionId+'">'
+                                        +entry.titleText+'</a></h3>'
+                                        +ret[0].highlighting[revisionId].text+'</br></br><hr style="color:#050000;"><p style="font-size:10px;"><b>Data: </b>'
+                                        +date_time[0]+'  <b>Czas: </b>'+date_time[1]+'</p><div style="text-align:center; font-size:15px;"><a href="allRevisions.php?id='+entry.id+'">Zobacz wszystkie rewizje artykułu</a>'
+                                        +'<a style="padding-left:20px;" href="latestRevision.php?id='+entry.id+'">Zobacz najnowszą rewizję artykułu</a></div></div>');
                                 i++;	
 
 			});
              //$('#results').append('');
-             var el = document.getElementById("per_page");
-             var selectedArea = el.options[el.selectedIndex].value;
-             $('#page_container').pajinate({items_per_page : selectedArea});
+             
+             //$('#page_container').pajinate({items_per_page : selectedArea});
+             var curPage = 1;
+             if (!curPage) {
+                   curPage = 1;
+             }
+             var options = {
+                        currentPage: curPage,
+                        totalPages: ret[1],
+                        alignment: 'center',
+                        onPageChanged: function(e,oldPage,newPage){
+                            i=(newPage-1)*options_array[4]+1;
+                            options_array[3]=newPage;
+                            $("#results_view").html('');
+                            $('#loader').html('<img alt="activity indicator" src="images/ajax-loader.gif"></img>');
+                            $.ajax({
+                                url: "solr.php",
+                                type: "post",
+                                data: {result:JSON.stringify(options_array)},
+                                dataType: 'json',
+                                success: function(ret){
+                                    //alert("success");
+                                   // var template = JSON.parse(JSON.stringify(ret.value[0]));
+                                   
+                                   ret[0].response.docs.forEach(function(entry) {
+                                                        var revisionId = entry.revision,
+                                                            date_time = entry.timestamp.split("T");
+                                                            date_time[1]=date_time[1].replace("Z",""); 
+
+                                                        $('#results_view').append('<div class="jumbotron" style="padding-top: 5px;"><h3>'+i+'. <a href="revision.php?id='+revisionId+'">'
+                                                            + entry.titleText + '</a></h3>'
+                                        + ret[0].highlighting[revisionId].text + '</br></br><hr style="color:#050000;"><p style="font-size:10px;"><b>Data: </b>'
+                                        + date_time[0] + '  <b>Czas: </b>' + date_time[1] + '</p><div style="text-align:center; font-size:15px;"><a href="allRevisions.php?id=' + entry.id + '">Zobacz wszystkie rewizje artykułu</a>'
+                                        + '<a style="padding-left:20px;"href="latestRevision.php?id=' + entry.id + '">Zobacz najnowszą rewizję artykułu</a></div></div>');
+                                                        i++;	
+
+                                                });
+                                   $('#loader').html('');
+                                },
+                                error:function(){
+                                    alert("Zapytanie jest błędne.");
+                                    //$("#results").html('There is error while submit');
+                                }
+                            });
+                        }
+             }
+
+             $('#pagination').bootstrapPaginator(options);
+             $('#pagination').css('display', 'block')
              window.scrollBy(0,350);
 //           ret.highlighting.forEach(function(entry) {
 //            $('#results').append('<div class="jumbotron" style="margin-top: 10px"><h3>'+entry.titleText+'</h3>'+entry.text+'</div>');
 //            });
         },
         error:function(){
-            alert("failure");
-            $("#results").html('There is error while submit');
+            alert("Zapytanie jest błędne.");
+            //$("#results").html('There is error while submit');
         }
     });
 });

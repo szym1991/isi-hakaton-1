@@ -29,10 +29,14 @@ if ($data[2][0] == true) {
     $comment = 'editionReason:'.$data[2][1];
     $query->addFilterQuery($comment); 
 }
+$page = $data[3];
+if (!$page) {
+                $page = 1;
+}
+$page = $page - 1;
 
-$query->setStart(0);
-
-$query->setRows(100);
+$query->setRows($data[4]);
+$query->setStart($page * $data[4]);;
 // $query->addHighlightField("text");
 $query->setHighlight(TRUE);
 $query->setHighlightSimplePre('<span class="result-highlighted">');
@@ -48,6 +52,9 @@ $query_response = $client->query($query);
 $query_response->setParseMode(SolrQueryResponse::PARSE_SOLR_DOC);
 $results = $query_response->getResponse();
 
+$total_found = $results['response']['numFound'];
+$total_found = $total_found / $data[4];
+
 //$facet_data = $results->facet_counts->facet_dates;
 
 /*
@@ -58,6 +65,7 @@ for ($i = 0; $i < count($results['response']['docs']); $i++) {
     $results['response']['docs'][$i]['text'] = $parser->parse($results['response']['docs'][$i]['text']);
 }
 
-echo json_encode($results);
+$ret = array($results, $total_found);
+echo json_encode($ret);
 //echo json_encode($query_response->getResponse());
 ?>
