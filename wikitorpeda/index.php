@@ -55,11 +55,8 @@
                             <input id="query" name="query" type="text" class="form-control" placeholder="Wpisz swoje zapytanie...">
                         </div>
                         </br>
-                        <div style="text-align: center;">
-                            <a id="search" class="btn btn-lg btn-primary text-center" href="#" role="button">Szukaj</a>
-                        </div>
                         <div style="text-align: right;">
-                            <button class="button" onclick="$('#tools_searcher').toggle();">Narzędzia zaawansowane</button>
+                            <button class="btn btn-default btn-sm" onclick="$('#tools_searcher').toggle();">Narzędzia zaawansowane</button>
                         </div>
                         </br>
                         <div id="tools_searcher" style="display: none;">
@@ -69,41 +66,53 @@
                                         <input class="question" type="checkbox" id="check_date" onclick="$('#date_searcher').toggle();"> Zakres dat  
                                     </label>
                                 </div>
-                                <div class="col-md-5" style="padding-top: 5px;">
-                                    Liczba wyników na stronie:
-                                    <select class="selectpicker" id="per_page" data-style="btn-warning">
-                                        <option selected>10</option>
-                                        <option>15</option>
-                                        <option>25</option>
-                                    </select>
-                                </div> 
                             </div>
                             <div id="date_searcher" style="display: none;">
-                                <div class="well" style="text-align: center;">
-                                    <div class="alert alert-error" id="alert" style="display: none;">
-                                        <strong>Oh snap!</strong>
-                                    </div>
-                                    <b>OD:</b> <input type="text" class="span2" id="dp1" > 
-                                    <b>DO:</b> <input type="text" class="span2" id="dp2" > 
-                                </div>
+								<div class="col-lg-6">
+									<div class="input-group">
+										<span class="input-group-addon">Od</span>
+										<input type="text" id="dp1" class="form-control" placeholder="">
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="input-group">
+										<span class="input-group-addon">Do</span>
+										<input type="text" id="dp2" class="form-control" placeholder="">
+									</div>
+								</div>
                             </div>​
 							<div class="row">
-                                <div class="checkbox col-md-3">
+                                <div class="checkbox col-md-6">
                                     <label>
-                                        <input class="question" type="checkbox" id="check_comment" onclick="$('#comment_searcher').toggle();"> Komentarz  
+                                        <input class="question" type="checkbox" id="check_comment" onclick="$('#comment_searcher').toggle();"> Powód edycji artykułu
                                     </label>
                                 </div>
                             </div>
                             <div id="comment_searcher" style="display: none;">
-                                <div class="well" style="text-align: center;">
-                                    <div class="alert alert-error" id="alert" style="display: none;">
-                                        <strong>Oh snap!</strong>
-                                    </div>
-                                    <b>Komentarz:</b> <input type="text" class="span2" id="comment" >
-                                </div>
+								<div class="col-lg-12">
+									<div class="input-group">
+										<span class="input-group-addon">!</span>
+										<input type="text" id="comment" class="form-control" placeholder="">
+									</div>
+								</div>
                             </div>​
+                            <div class="row">
+								<div class="col-lg-6">
+									<div class="input-group">
+										<span class="input-group-addon">Liczba wyników na stronie</span>
+										<select class="form-control input-sm" id="per_page" data-style="btn-warning">
+											<option selected>10</option>
+											<option>15</option>
+											<option>25</option>
+										</select>
+									</div>
+								</div>
+                            </div>
                         </div>
-
+                        <br/>
+						<div style="text-align: center;">
+                            <a id="search" class="btn btn-lg btn-primary text-center" href="#" role="button">Szukaj</a>
+                        </div>
                         </p>
                     </div>
                 </div>
