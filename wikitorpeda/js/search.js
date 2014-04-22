@@ -55,12 +55,19 @@ $("#search").click(function(event) {
            $('#results').append('<div id="page_container"><div id="pagination"></div><div id="loader" style="line-height: 115px; text-align: center;"></div><div id="results_view"></div></div>');
            ret[0].response.docs.forEach(function(entry) {
                                 var revisionId = entry.revision,
-                                    date_time = entry.timestamp.split("T");
-                                    date_time[1]=date_time[1].replace("Z",""); 
+                                    date_time = entry.timestamp.split("T"),
+                                    snip;
+                                date_time[1]=date_time[1].replace("Z",""); 
+                                if(ret[0].highlighting[revisionId].text !== undefined){
+                                    snip=ret[0].highlighting[revisionId].text;
+                                }
+                                else{
+                                    snip=entry.text.substring(0,250);
+                                }
 
 				$('#results_view').append('<div class="jumbotron" style="padding-top: 5px;"><h3>'+i+'. <a href="revision.php?id='+revisionId+'">'
                                         +entry.titleText+'</a></h3>'
-                                        +ret[0].highlighting[revisionId].text+'</br></br><hr style="color:#050000;"><p style="font-size:10px;"><b>Data: </b>'
+                                        +snip+'</br></br><hr style="color:#050000;"><p style="font-size:10px;"><b>Data: </b>'
                                         +date_time[0]+'  <b>Czas: </b>'+date_time[1]+'</p><div style="text-align:center; font-size:15px;"><a href="allRevisions.php?id='+entry.id+'">Zobacz wszystkie rewizje artykułu</a>'
                                         +'<a style="padding-left:20px;" href="latestRevision.php?id='+entry.id+'">Zobacz najnowszą rewizję artykułu</a></div></div>');
                                 i++;	

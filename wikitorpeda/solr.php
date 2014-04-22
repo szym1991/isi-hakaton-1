@@ -22,27 +22,30 @@ $query = new SolrQuery();
 
 $query->setQuery($data[0]);
 if ($data[1][0] == true) {
-    $range = 'timestamp:['.$data[1][1].' TO '.$data[1][2].']';
-    $query->addFilterQuery($range); 
+    $range = 'timestamp:[' . $data[1][1] . ' TO ' . $data[1][2] . ']';
+    $query->addFilterQuery($range);
 }
 if ($data[2][0] == true) {
-    $comment = 'editionReason:'.$data[2][1];
-    $query->addFilterQuery($comment); 
+    $comment = 'editionReason:' . $data[2][1];
+    $query->addFilterQuery($comment);
 }
 $page = $data[3];
 if (!$page) {
-                $page = 1;
+    $page = 1;
 }
 $page = $page - 1;
 
 $query->setRows($data[4]);
-$query->setStart($page * $data[4]);;
+$query->setStart($page * $data[4]);
+;
 // $query->addHighlightField("text");
 $query->setHighlight(TRUE);
 $query->setHighlightSimplePre('<span class="result-highlighted">');
 $query->setHighlightSimplePost('</span>');
 $query->setHighlightUsePhraseHighlighter(true);
 $query->setHighlightFragsize(250);
+
+
 
 
 $parser = new wikiParser(); //błążejowe
@@ -61,9 +64,9 @@ $total_found = $total_found / $data[4];
  * Parsowanie tekstu artykułów
  */
 
-for ($i = 0; $i < count($results['response']['docs']); $i++) {
-    $results['response']['docs'][$i]['text'] = $parser->parse($results['response']['docs'][$i]['text']);
-}
+/* for ($i = 0; $i < count($results['response']['docs']); $i++) {
+  $results['highlighting'][$i]['text'] = $parser->parse($results['highlighting'][$i]['text']);
+  } */
 
 $ret = array($results, $total_found);
 echo json_encode($ret);
