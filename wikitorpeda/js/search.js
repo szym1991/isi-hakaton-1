@@ -13,6 +13,9 @@ $("#search").click(function(event) {
     var values = $('#query').serialize();
     var options_array = new Array();
     options_array[0]=document.getElementById("query").value;
+    if(options_array[0]===""){
+        options_array[0]="*";
+    }
     if (document.getElementById('check_date').checked){
         var date_options = new Array();
         date_options[0]=true;
