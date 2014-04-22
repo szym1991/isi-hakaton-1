@@ -62,6 +62,7 @@
             $query->addField('id');
             $query->addField('titleText');
             $query->addField('editionReason');
+            $query->addSortField('timestamp', SolrQuery::ORDER_DESC);
             $query->addFilterQuery("id:".$articleId);
             $query->setQuery("*:*");
             
@@ -96,10 +97,15 @@
                             echo $i;
                             echo '</td>';
                             echo '<td>';
+                            echo '<a href="revision.php?id=';
                             echo $results['response']['docs'][$i]['revision'];
+                            echo '">'.$results['response']['docs'][$i]['revision'];
+                            echo '</a>';
                             echo '</td>';
                             echo '<td>';
-                            echo $results['response']['docs'][$i]['timestamp'];
+                            $new_timestamp = str_replace('T', '&nbsp;', $results['response']['docs'][$i]['timestamp']);
+                            $new_timestamp = str_replace('Z', '', $new_timestamp);
+                            echo $new_timestamp;
                             echo '</td>';
                             echo '<td>';
                             echo $results['response']['docs'][$i]['editionReason'];
