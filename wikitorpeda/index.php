@@ -142,11 +142,11 @@
         <!-- Placed at the end of the document so the pages load faster -->      
         <script src="js/jquery.js"></script>
         <script src="js/bootstrap.js"></script>
-        <script src="js/bootstrap-datepicker.js"></script>
         <script src="paginator/lib/bootstrap-paginator.min.js"></script>
         <script src="paginator/lib/jquery-1.9.1.min.js"></script>
         <script src="paginator/src/bootstrap-paginator.js"></script>
         <script src="paginator/lib/qunit-1.11.0.js"></script>
+        <script src="js/bootstrap-datepicker.js"></script>
         <script src="js/search.js"></script>
         <script>
                                 $('#check_date').removeAttr("checked");
