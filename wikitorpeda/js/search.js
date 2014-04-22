@@ -49,7 +49,10 @@ $("#search").click(function(event) {
                                     date_time = entry.timestamp.split("T");
                                     date_time[1]=date_time[1].replace("Z",""); 
 
-				$('#results .content').append('<li><div class="jumbotron" style="padding-top: 5px;"><h3>'+i+'. <a href="revision.php?id='+revisionId+'">'+entry.titleText+'</a></h3>'+ret.highlighting[revisionId].text+'</br></br><hr style="color:#050000;"><p style="font-size:10px;"><b>Data: </b>'+date_time[0]+'  <b>Czas: </b>'+date_time[1]+'</p></div></li>');
+				$('#results .content').append('<li><div class="jumbotron" style="padding-top: 5px;"><h3>'+i+'. <a href="revision.php?id='+revisionId+'">'
+                                        +entry.titleText+'</a></h3>'+'<h5><a href="allRevisions.php?id='+entry.id+'">Zobacz wszystkie rewizje artykułu</a></h5>'
+                                        +ret.highlighting[revisionId].text+'</br></br><hr style="color:#050000;"><p style="font-size:10px;"><b>Data: </b>'
+                                        +date_time[0]+'  <b>Czas: </b>'+date_time[1]+'</p></div></li>');
                                 i++;	
 
 			});
