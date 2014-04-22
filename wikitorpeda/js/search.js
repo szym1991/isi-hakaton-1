@@ -51,7 +51,7 @@ $("#search").click(function(event) {
         success: function(ret) {
             //alert("success");
             // var template = JSON.parse(JSON.stringify(ret.value[0]));
-            if (ret[1] !== 0) {
+            if (ret[2] !== 0) {
                 $('#results').append('<div id="page_container"><h2 style="text-align:center;">Znaleziono <b>'+ret[2]+'</b> wyników</h2><div id="pagination"></div><div id="loader" style="line-height: 115px; text-align: center;"></div><div id="results_view"></div></div>');
                 ret[0].response.docs.forEach(function(entry) {
                     var revisionId = entry.revision,
