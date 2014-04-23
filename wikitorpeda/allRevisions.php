@@ -73,7 +73,7 @@
             $query->addField('parentId');
             $query->addField('id');
             $query->addField('titleText');
-            $query->addField('editionReason');
+            $query->addField('comment');
             $query->addSortField('timestamp', SolrQuery::ORDER_DESC);
             $query->addFilterQuery("id:" . $articleId);
             $query->setQuery("*:*");
@@ -145,7 +145,7 @@
                             echo $new_timestamp;
                             echo '</td>';
                             echo '<td>';
-                            echo $results['response']['docs'][$i]['editionReason'];
+                            echo $results['response']['docs'][$i]['comment'];
                             echo '</td>';
                             echo '</tr>';
                         }
