@@ -52,7 +52,7 @@ $("#search").click(function(event) {
             //alert("success");
             // var template = JSON.parse(JSON.stringify(ret.value[0]));
             if (ret[2] !== 0) {
-                $('#results').append('<div id="page_container"><h2 style="text-align:center;">Znaleziono <b>'+ret[2]+'</b> wyników</h2><div id="pagination"></div><div id="loader" style="line-height: 115px; text-align: center;"></div><div id="results_view"></div></div>');
+                $('#results').append('<div id="page_container"><h2 style="text-align:center;">Znaleziono <b>' + ret[2] + '</b> wyników</h2><div id="pagination"></div><div id="loader" style="line-height: 115px; text-align: center;"></div><div id="results_view"></div></div>');
                 ret[0].response.docs.forEach(function(entry) {
                     var revisionId = entry.revision,
                             date_time = entry.timestamp.split("T"),
@@ -64,12 +64,20 @@ $("#search").click(function(event) {
                     else {
                         snip = entry.text.substring(0, 250);
                     }
+                    if (entry.editionReason !== undefined) {
+                        $('#results_view').append('<div class="jumbotron" style="padding-top: 5px;"><h3>' + i + '. <a href="revision.php?id=' + revisionId + '">'
+                                + entry.titleText + '</a></h3>'
+                                + snip + '</br></br><hr style="color:#050000;"><p style="font-size:12px;"><b>Powód edycji:</b>' + entry.editionReason + '</p><p style="font-size:10px;"><b>Data: </b>'
+                                + date_time[0] + '  <b>Czas: </b>' + date_time[1] + '</p><div style="text-align:center; font-size:15px;"><a href="allRevisions.php?id=' + entry.id + '">Zobacz wszystkie rewizje artykułu</a>'
+                                + '<a style="padding-left:20px;" href="latestRevision.php?id=' + entry.id + '">Zobacz najnowszą rewizję artykułu</a></div></div>');
+                    } else {
+                        $('#results_view').append('<div class="jumbotron" style="padding-top: 5px;"><h3>' + i + '. <a href="revision.php?id=' + revisionId + '">'
+                                + entry.titleText + '</a></h3>'
+                                + snip + '</br></br><hr style="color:#050000;"><p style="font-size:10px;"><b>Data: </b>'
+                                + date_time[0] + '  <b>Czas: </b>' + date_time[1] + '</p><div style="text-align:center; font-size:15px;"><a href="allRevisions.php?id=' + entry.id + '">Zobacz wszystkie rewizje artykułu</a>'
+                                + '<a style="padding-left:20px;" href="latestRevision.php?id=' + entry.id + '">Zobacz najnowszą rewizję artykułu</a></div></div>');
+                    }
 
-                    $('#results_view').append('<div class="jumbotron" style="padding-top: 5px;"><h3>' + i + '. <a href="revision.php?id=' + revisionId + '">'
-                            + entry.titleText + '</a></h3>'
-                            + snip + '</br></br><hr style="color:#050000;"><p style="font-size:12px;"><b>Powód edycji:</b>'+entry.editionReason+'</p><p style="font-size:10px;"><b>Data: </b>'
-                            + date_time[0] + '  <b>Czas: </b>' + date_time[1] + '</p><div style="text-align:center; font-size:15px;"><a href="allRevisions.php?id=' + entry.id + '">Zobacz wszystkie rewizje artykułu</a>'
-                            + '<a style="padding-left:20px;" href="latestRevision.php?id=' + entry.id + '">Zobacz najnowszą rewizję artykułu</a></div></div>');
                     i++;
 
                 });
@@ -109,12 +117,20 @@ $("#search").click(function(event) {
                                     else {
                                         snip = entry.text.substring(0, 250);
                                     }
-
-                                    $('#results_view').append('<div class="jumbotron" style="padding-top: 5px;"><h3>' + i + '. <a href="revision.php?id=' + revisionId + '">'
+                                    if (entry.editionReason !== undefined) {
+                                        $('#results_view').append('<div class="jumbotron" style="padding-top: 5px;"><h3>' + i + '. <a href="revision.php?id=' + revisionId + '">'
                                             + entry.titleText + '</a></h3>'
-                                            + snip + '</br></br><hr style="color:#050000;"><p style="font-size:12px;"><b>Powód edycji:</b>'+entry.editionReason+'</p><p style="font-size:10px;"><b>Data: </b>'
+                                            + snip + '</br></br><hr style="color:#050000;"><p style="font-size:12px;"><b>Powód edycji:</b>' + entry.editionReason + '</p><p style="font-size:10px;"><b>Data: </b>'
                                             + date_time[0] + '  <b>Czas: </b>' + date_time[1] + '</p><div style="text-align:center; font-size:15px;"><a href="allRevisions.php?id=' + entry.id + '">Zobacz wszystkie rewizje artykułu</a>'
                                             + '<a style="padding-left:20px;"href="latestRevision.php?id=' + entry.id + '">Zobacz najnowszą rewizję artykułu</a></div></div>');
+                                    } else {
+                                        $('#results_view').append('<div class="jumbotron" style="padding-top: 5px;"><h3>' + i + '. <a href="revision.php?id=' + revisionId + '">'
+                                            + entry.titleText + '</a></h3>'
+                                            + snip + '</br></br><hr style="color:#050000;"><p style="font-size:10px;"><b>Data: </b>'
+                                            + date_time[0] + '  <b>Czas: </b>' + date_time[1] + '</p><div style="text-align:center; font-size:15px;"><a href="allRevisions.php?id=' + entry.id + '">Zobacz wszystkie rewizje artykułu</a>'
+                                            + '<a style="padding-left:20px;"href="latestRevision.php?id=' + entry.id + '">Zobacz najnowszą rewizję artykułu</a></div></div>');
+                                    }
+                                    
                                     i++;
 
                                 });
@@ -130,7 +146,7 @@ $("#search").click(function(event) {
 
                 $('#pagination').bootstrapPaginator(options);
                 $('#pagination').css('display', 'block');
-            }else{
+            } else {
                 $('#results').append('<div id="page_container"><h2 style="text-align:center;">Brak wyników</h2></div>');
             }
             window.scrollBy(0, 350);
